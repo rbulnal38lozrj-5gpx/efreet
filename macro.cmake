@@ -1,0 +1,15 @@
+macro(buildExecutable targetName)
+    set(TARGET ${targetName})
+    file(GLOB_RECURSE SOURCES *.h *.cpp ${ADDITIONAL_SOURCE_PATTERNS})
+
+    set(INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${ADDITIONAL_INCLUDE_DIRECTORIES} ${CMAKE_CURRENT_SOURCE_DIR})
+    include_directories(${INCLUDE_DIRECTORIES})
+
+    set(LINK_LIBRARIES ${LINK_LIBRARIES} ${ADDITIONAL_LINK_LIBRARIES})
+
+    add_executable(${TARGET} ${SOURCES} ${ADDITIONAL_FILES})
+    target_compile_definitions(${TARGET} PRIVATE ${ADDITIONAL_DEFINES})
+    target_link_libraries(${TARGET} ${LINK_LIBRARIES})
+
+    install(TARGETS ${TARGET} DESTINATION ${CMAKE_INSTALL_PREFIX})
+endmacro()

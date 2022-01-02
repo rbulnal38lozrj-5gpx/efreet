@@ -1,0 +1,2 @@
+set(ADDITIONAL_INCLUDE_DIRECTORIES ${ADDITIONAL_INCLUDE_DIRECTORIES} src/efreet)
+buildExecutable(efreet)
